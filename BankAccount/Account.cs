@@ -9,7 +9,7 @@ namespace BankAccount
     /// <summary>
     /// A single customer's bank account
     /// </summary>
-    internal class Account
+    public class Account
     {
         /// <summary>
         /// Create an account with a specific owner and a balance of 0
@@ -30,7 +30,7 @@ namespace BankAccount
         /// <param name="amt">The positive amount to deposit</param>
         public void Deposit(double amt)
         {
-            throw new NotImplementedException();
+            Balance += amt;
         }
 
         /// <summary>
