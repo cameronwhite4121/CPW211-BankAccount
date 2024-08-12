@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankAccount
+﻿namespace BankAccount
 {
     /// <summary>
     /// A single customer's bank account
@@ -22,15 +16,23 @@ namespace BankAccount
 
         public string Owner { get; set; }
 
-        public double Balance { get; set; }
+        public double Balance { get; private set; }
 
         /// <summary>
         /// Add a specified amount of money to the account
         /// </summary>
         /// <param name="amt">The positive amount to deposit</param>
-        public void Deposit(double amt)
+        /// <returns> Returns total balance after deposit </returns>
+        public double Deposit(double amt)
         {
+            if(amt <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Deposit must be greater than 0");
+            }
+
             Balance += amt;
+
+            return Balance;
         }
 
         /// <summary>
@@ -38,9 +40,11 @@ namespace BankAccount
         /// </summary>
         /// <param name="amt"> The positive amount to be taken from
         /// the balance </param>
-        public void Withdraw(double amt)
+        /// <returns> Returns balance after the withdraw </returns>
+        public double Withdraw(double amt)
         {
-            throw new NotImplementedException(); 
+            Balance -= amt;
+            return Balance;
         }
     }
 }
