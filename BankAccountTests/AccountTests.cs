@@ -24,6 +24,7 @@ namespace BankAccount.Tests
         [DataRow(.01)]
         [DataRow(1.99)]
         [DataRow(9_989.08)]
+        [TestCategory("DepositTest")]
         public void Deposit_APositiveAmount_AddToBalance(double depositAmount)
         {
             // AAA - Arrange Act Assert
@@ -42,6 +43,7 @@ namespace BankAccount.Tests
         /// Tests if balance is returned after deposit is called
         /// </summary>
         [TestMethod]
+        [TestCategory("DepositTest")]
         public void Deposit_APositiveAmount_ReturnsUpdatedBalance() 
         {
             Account acc = new Account("Crooble");
@@ -60,6 +62,7 @@ namespace BankAccount.Tests
         [TestMethod]
         [DataRow(-1)]
         [DataRow(0)]
+        [TestCategory("DepositTest")]
         public void Deposit_ZeroOrLess_ThrowsArgumentException(double invalidDeposit) 
         {
             // Arrange
@@ -71,6 +74,7 @@ namespace BankAccount.Tests
         }
 
         [TestMethod]
+        [TestCategory("WithdrawTest")]
         public void Withdraw_PositiveAmount_DecreasesBalance()
         {
             double initialDeposit = 100;
@@ -89,6 +93,7 @@ namespace BankAccount.Tests
         }
 
         [TestMethod]
+        [TestCategory("WithdrawTest")]
         public void Withdraw_PositiveAmount_ReturnsUpdatedBalance()
         {
             double testDeposit = 150;
@@ -104,6 +109,7 @@ namespace BankAccount.Tests
         [DataRow(0)]
         [DataRow(-0.01)]
         [DataRow(-1000)]
+        [TestCategory("WithdrawTest")]
         public void Withdraw_ZeroOrLess_ThrowsArgumentOutOfRangeException(double invalidWithdraw)
         {        
             Assert.ThrowsException<ArgumentOutOfRangeException>
@@ -111,6 +117,7 @@ namespace BankAccount.Tests
         }
 
         [TestMethod]
+        [TestCategory("WithdrawTest")]
         public void Withdraw_MoreThanAvailableBalance_ThrowsArumentException ()
         {
             double largeWithdraw = 1500;
