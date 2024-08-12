@@ -43,6 +43,16 @@
         /// <returns> Returns balance after the withdraw </returns>
         public double Withdraw(double amt)
         {
+            if(amt > Balance)
+            {
+                throw new ArgumentException("Withdraw can't be greater than the balance");
+            }
+
+            if (amt <= 0) 
+            {
+                throw new ArgumentOutOfRangeException("Withdraw must be greater than 0");
+            } 
+            
             Balance -= amt;
             return Balance;
         }
