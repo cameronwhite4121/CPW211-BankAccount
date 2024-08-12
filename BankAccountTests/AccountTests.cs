@@ -124,5 +124,34 @@ namespace BankAccount.Tests
 
             Assert.ThrowsException<ArgumentException>(() => acc.Withdraw(largeWithdraw));
         }
+
+        [TestMethod]
+        public void Owner_SetAsNull_ThrowsArgumentNullException()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void Owner_EmptyStringOrWhitespace_ThrowsArgumentException()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        [DataRow("Cam")]
+        [DataRow("Cameron White")]
+        [DataRow("Cameron James White")]
+        public void Owner_UpTo20Characters_SetsSuccessfully()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        [DataRow("Cameron James White is too long of a name")]
+        [DataRow("Camer0n White")]
+        public void Owner_InvalidOwnerName_ThrowsArgumentException()
+        {
+            Assert.Fail();
+        }
     }
 }
